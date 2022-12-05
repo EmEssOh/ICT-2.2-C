@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "W1O2.h"
+
 void print_function( char letter );
 int ctr;
 

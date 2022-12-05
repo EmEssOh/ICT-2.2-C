@@ -1,21 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "W1O2.h"
+#include "W1O2.c"
 
-void print_f( void );
+int print_f( void );
+
 int main( void ) 
 {
-    int userInput;
-    printf("Kies een nummer: \n");
-    scanf("%d", &userInput);
-    printf("Je hebt gekozen voor nummer: %d \n", userInput);
-    if (userInput < 0) 
+    int num;
+    printf("Kies een nummer:");
+    scanf("%d", &num);
+    
+    if (num < 0)
     {
         return 0;
     }
-    else 
+    if (num == 2)
     {
+        printf("Je hebt gekozen voor nummer: %d", num);
         print_f();
     }
+    else
+    {
+        printf("Je hebt gekozen voor nummer: %d", num);
+    }
+
   
 }
