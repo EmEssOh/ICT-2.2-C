@@ -11,8 +11,9 @@ struct student
     char naam[30];
     int leeftijd;
     struct opleiding opleiding; 
-} data[3]; 
+} 
 
+data[3];
 
 int main (void) 
 {
@@ -20,11 +21,11 @@ int main (void)
     int x; 
     int y; 
 
-    printf("Vul drie namen in. NOTE: klik op enter na het invullen van een naam. \n");
-    scanf("%s %s %s", data[0].naam, data[1].naam, data[2].naam);
-
     for (x=0; x<3; x++) 
     {  
+        printf("Naam Student: ");
+        scanf("%s", &data[x].naam);
+
         printf("\nLeeftijd van %s: ", data[x].naam);
         scanf("%d", &data[x].leeftijd); 
 
