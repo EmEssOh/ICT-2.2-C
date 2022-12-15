@@ -9,6 +9,7 @@ int main( void )
     int num;
     printf("Kies een nummer:");
     scanf("%d", &num);
+    printf("Je hebt gekozen voor nummer: %d", num);
     
     if (num < 0)
     {
@@ -19,10 +20,5 @@ int main( void )
         printf("Je hebt gekozen voor nummer: %d", num);
         print_f();
     }
-    else
-    {
-        printf("Je hebt gekozen voor nummer: %d", num);
-    }
-
   
 }
