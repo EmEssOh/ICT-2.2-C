@@ -10,25 +10,25 @@ struct persoon
 int main() 
 {
     struct persoon *pointer;
-    int records; 
+    pointer = (struct persoon*)malloc(sizeof(struct persoon));
+    int x;
+    x = 0;
     
-    printf("Vul het aantal personen in dat je wilt toevoegen: ");
-    scanf("%d", &records); 
-
-    pointer = (struct persoon *)malloc(records * sizeof(struct persoon)); 
-    for (int i = 0; i < records; ++i) { 
-        printf("Vul de naam van de persoon in: \n"); 
-        scanf("%s", &(pointer + i)->naam);
-        printf("Vul de leeftijd van %s in: \n", pointer + i);
-        scanf("%d", &(pointer + i)->leeftijd);
-    }
-
-    printf("Gegevens:\n");  
-    for (int i = 0; i < records; ++i) 
+    while(1)
     {
-        printf("Naam: %s\tLeeftijd: %d\n", (pointer + i)->naam, (pointer + i)->leeftijd);
+        printf("\nVul de naam van de persoon in: ");
+        scanf("%s", &(pointer + x)->naam);
+        printf("Vul de leeftijd van %s in: ", pointer + x);
+        scanf("%d", &(pointer + x)->leeftijd);
+
+        x++;
+
+        for (int y = 0; y != x; y++)
+        {
+            printf("\nNaam: %s\tLeeftijd: %d", (pointer + y)->naam, (pointer + y)->leeftijd);
+        }
+        
+        pointer = (struct persoon *)realloc(pointer, sizeof(struct persoon) + sizeof(struct persoon));
+      
     }
-  
-    free(pointer);
-    return 0;
 }
