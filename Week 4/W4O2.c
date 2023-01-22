@@ -1,34 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct persoon 
-{
-    char naam[15];
-    int leeftijd;
-}; 
+struct person {
+    char name[30];
+    int age;
+};
 
-int main() 
-{
-    struct persoon *pointer;
-    pointer = (struct persoon*)malloc(sizeof(struct persoon));
-    int x;
-    x = 0;
-    
-    while(1)
-    {
-        printf("\nVul de naam van de persoon in: ");
-        scanf("%s", &(pointer + x)->naam);
-        printf("Vul de leeftijd van %s in: ", pointer + x);
-        scanf("%d", &(pointer + x)->leeftijd);
+int main() {
+    struct person *ptr_person = NULL;
+    int count = 0;
+    int response;
+    int max_count = 1;
+    int i;
 
-        x++;
+    ptr_person = (struct person *)malloc(max_count * sizeof(struct person));
 
-        for (int y = 0; y != x; y++)
-        {
-            printf("\nNaam: %s\tLeeftijd: %d", (pointer + y)->naam, (pointer + y)->leeftijd);
+    while (1) {
+        printf("Enter the name of the person: \n");
+        scanf(" %[^\n]s", &(ptr_person + count)->name);
+
+        printf("Enter the age: \n");
+        scanf("%d", &(ptr_person + count)->age);
+
+        printf("              Students              \n");
+        for (i = 0; i < count + 1; ++i) {
+            printf("Name: %s\tAge: %d\n", (ptr_person + i)->name, (ptr_person + i)->age);
         }
-        
-        pointer = (struct persoon *)realloc(pointer, sizeof(struct persoon) + sizeof(struct persoon));
-      
+        printf("Would you like to add another person? (1/0)\n");
+        scanf("%d", &response);
+
+        if (response == 0) {
+            break;
+        }
+        count++;
+
+        if (count > max_count) {
+            max_count *= 2;
+            ptr_person = (struct person *)realloc(ptr_person, max_count * sizeof(struct person));
+            if (ptr_person == NULL) {
+                printf("Error: memory full\n");
+                return 1;
+            }
+        }
     }
+    free(ptr_person);
+    return 0;
 }
